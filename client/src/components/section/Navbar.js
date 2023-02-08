@@ -13,8 +13,8 @@ const Navbar = () => {
           <div className="flex justify-between lg:w-2/4">
             <img src="logo.png" alt="logo" className="w-[45%] lg:w-1/4" />
             <div onClick={() => setToggle(!toggle)} className="text-4xl">
-              <i class={`fa-solid fa-bars  lg:hidden ${!toggle ? "block" : "hidden"}`}></i>
-              <i class={`fa-solid fa-xmark lg:hidden ${toggle ? "block" : "hidden"}`}></i>
+              <i className={`fa-solid fa-bars  lg:hidden ${!toggle ? "block" : "hidden"}`}></i>
+              <i className={`fa-solid fa-xmark lg:hidden ${toggle ? "block" : "hidden"}`}></i>
             </div>
           </div>
           <div className="rounded-xl bg-base-600 px-4 lg:w-2/4 lg:bg-transparent">

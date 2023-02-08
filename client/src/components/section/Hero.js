@@ -15,7 +15,7 @@ const Hero = () => {
               <div className="flex justify-evenly lg:justify-start lg:space-x-4 pt-4">
                 <button className="rounded-full bg-base-200 px-6 py-3 text-slate-50">Bergabung</button>
                 <button className="flex items-center space-x-2 rounded-full bg-white px-4 py-3">
-                  <i class="fa-solid fa-play text-base-500"></i>
+                  <i className="fa-solid fa-play text-base-500"></i>
                   <span>Tonton Video</span>
                 </button>
               </div>
