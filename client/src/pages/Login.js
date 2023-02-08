@@ -7,6 +7,8 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
 
   const signIn = async (e) => {
@@ -18,7 +20,7 @@ const Login = () => {
       localStorage.setItem("token", res.data.data.token);
       navigate("/dashboard");
     } catch (err) {
-      console.log(err.response);
+      setError(err.response.data.msg);
     }
   };
 
@@ -34,6 +36,7 @@ const Login = () => {
               <p className="w-3/4 pb-10 text-3xl font-bold text-base-300">
                 Login Untuk Dapatkan <span className="text-base-200">Fitur Menarik</span>
               </p>
+              <p className="text-red-500 pb-4">{error}</p>
               <div className="relative">
                 <input name="email" value={form.email} onChange={handleChange} type="email" placeholder="Masukan Email Anda" className="w-full rounded-md border py-2 pl-20 focus:outline-none" />
                 <i className="fa-solid fa-envelope absolute left-2 top-1 border-r-2 px-4 text-2xl text-base-400"></i>

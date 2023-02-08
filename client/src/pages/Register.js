@@ -10,18 +10,23 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const signUp = async (e) => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:4000/cms/users/", form);
+      setSuccess("Berhasil membuat akun, silahkan login");
     } catch (err) {
-      console.log(err.response.data.msg);
+      setError(err.response.data.msg);
     }
   };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setError("")
+    setSuccess("")
   };
   return (
     <>
@@ -32,6 +37,8 @@ const Register = () => {
               <p className="w-3/4 pb-10 text-3xl font-bold text-base-300">
                 Daftar dan Dapatkan <span className="text-base-200">Fitur Menarik</span>
               </p>
+              <p className="pb-4 text-red-500">{error}</p>
+              <p className="pb-4 text-base-500">{success}</p>
               <div className="relative mb-6">
                 <input type="text" placeholder="Masukan Nama Lengkap" className="w-full rounded-md border py-2 pl-20 focus:outline-none" value={form.nama} name="nama" onChange={handleChange} />
                 <i className="fa-solid fa-user absolute left-2 top-1 border-r-2 px-4 text-2xl text-base-400"></i>
