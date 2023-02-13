@@ -14,11 +14,10 @@ const authenticateUser = async (req, res, next) => {
     const payload = isTokenValid({ token });
 
     req.user = {
-      email: payload.email,
+      nama: payload.nama,
+      id: payload._id,
       role: payload.role,
-      name: payload.name,
-      organizer: payload.organizer,
-      id: payload.userId,
+      email: payload.email,
     };
 
     next();

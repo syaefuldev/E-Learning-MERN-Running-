@@ -3,12 +3,13 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const cors = require("cors")
+const cors = require("cors");
 
 const app = express();
 
 const usersRouter = require("./app/api/users/router");
 const authRouter = require("./app/api/auth/router");
+const coursesRouter = require("./app/api/courses/router");
 
 //middleware
 const notFoundMiddleware = require("./app/middlewares/not-found");
@@ -18,7 +19,7 @@ const handleErrorMiddleware = require("./app/middlewares/handle-error");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(cors())
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/cms", usersRouter);
 app.use("/cms", authRouter);
+app.use("/cms", coursesRouter);
 
 app.use(notFoundMiddleware);
 app.use(handleErrorMiddleware);
