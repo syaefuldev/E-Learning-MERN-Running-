@@ -2,7 +2,7 @@ const User = require("../../api/users/model");
 const { BadRequestError } = require("../../errors");
 
 const createUser = async (req) => {
-  const { nama, email, password, role, username } = req.body;
+  const { nama, email, password, role, username, bio } = req.body;
 
   const users = await User.create({
     nama,
@@ -10,6 +10,7 @@ const createUser = async (req) => {
     password,
     role,
     username,
+    bio,
     avatar: req.file ? `uploads/${req.file.filename}` : `uploads/default.png`,
   });
 

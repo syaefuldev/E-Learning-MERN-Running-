@@ -29,6 +29,9 @@ let usersSchema = new mongoose.Schema(
     avatar: {
       type: String,
     },
+    bio: {
+      type: String,
+    },
     role: {
       type: String,
       enum: ["client", "admin"],

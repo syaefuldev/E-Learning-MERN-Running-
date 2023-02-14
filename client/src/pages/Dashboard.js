@@ -75,7 +75,7 @@ const Dashboard = () => {
                   <p className="flex items-center space-x-3">
                     <i className="fa-solid fa-gear flex w-[30px] justify-center text-xl text-slate-500"></i>
 
-                    <Link to={"/dashboard"} className="text-md text-slate-500">
+                    <Link to={"/profile"} className="text-md text-slate-500">
                       Settings
                     </Link>
                   </p>

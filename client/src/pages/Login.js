@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 
 const Login = () => {
+  const token = localStorage.getItem("token");
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -24,6 +26,10 @@ const Login = () => {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+
+  if (token) {
+    return <Navigate to={"/dashboard"} replace={true} />;
+  }
   return (
     <>
       <section id="login">
