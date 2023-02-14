@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 const Dashboard = () => {
   const token = localStorage.getItem("token");
   const [data, setData] = useState([]);
 
   const getUsers = async () => {
-    const res = await axios.get("http://localhost:4000/cms/users");
+    const decode = jwtDecode(token);
+    
 
-    setData(res.data.data);
+    setData([decode]);
   };
   console.log(data);
 
@@ -31,7 +32,7 @@ const Dashboard = () => {
             {data.map((index) => (
               <div key={index}>
                 <img
-                  src={`${index.avatar}`}
+                  src={index.avatar ? `http://localhost:4000/${index.avatar}` :`http://localhost:4000/uploads/default.png`}
                   alt="profile"
                   className="mb-4 h-[80px] w-[80px] rounded-full"
                 />
@@ -39,40 +40,40 @@ const Dashboard = () => {
                 <p className="mt-1 text-sm text-base-300">Life is Journey</p>
                 <div className="mt-8 flex-col space-y-6">
                   <p className="flex items-center space-x-3">
-                    <i class=" fa-solid fa-comments flex w-[30px] justify-center text-xl text-base-200"></i>
+                    <i className=" fa-solid fa-comments flex w-[30px] justify-center text-xl text-base-200"></i>
                     <Link to={"/dashboard"} className="text-md text-slate-500">
                       Forum {"(Umum)"}
                     </Link>
                   </p>
                   <p className="flex items-center space-x-3">
-                    <i class="fa-solid fa-book flex w-[30px] justify-center text-xl text-slate-500"></i>
+                    <i className="fa-solid fa-book flex w-[30px] justify-center text-xl text-slate-500"></i>
                     <Link to={"/dashboard"} className="text-md text-slate-500">
                       Kelas saya
                     </Link>
                   </p>
                   <p className="flex items-center space-x-3">
-                    <i class="fa-solid fa-shop flex w-[30px] justify-center text-xl text-slate-500"></i>
+                    <i className="fa-solid fa-shop flex w-[30px] justify-center text-xl text-slate-500"></i>
 
                     <Link to={"/dashboard"} className="text-md text-slate-500">
                       Voucher
                     </Link>
                   </p>
                   <p className="flex items-center space-x-3">
-                    <i class="fa-solid fa-palette flex w-[30px] justify-center text-xl text-slate-500"></i>
+                    <i className="fa-solid fa-palette flex w-[30px] justify-center text-xl text-slate-500"></i>
 
                     <Link to={"/dashboard"} className="text-md text-slate-500">
                       Karya saya
                     </Link>
                   </p>
                   <p className="flex items-center space-x-3">
-                    <i class="fa-solid fa-cart-shopping flex w-[30px] justify-center text-xl text-slate-500"></i>
+                    <i className="fa-solid fa-cart-shopping flex w-[30px] justify-center text-xl text-slate-500"></i>
 
                     <Link to={"/dashboard"} className="text-md text-slate-500">
                       Riwayat Transaksi
                     </Link>
                   </p>
                   <p className="flex items-center space-x-3">
-                    <i class="fa-solid fa-gear flex w-[30px] justify-center text-xl text-slate-500"></i>
+                    <i className="fa-solid fa-gear flex w-[30px] justify-center text-xl text-slate-500"></i>
 
                     <Link to={"/dashboard"} className="text-md text-slate-500">
                       Settings
@@ -92,17 +93,17 @@ const Dashboard = () => {
                 id="title"
                 className="flex w-full items-center justify-between bg-base-600 py-4"
               >
-                <i class="fa-solid fa-arrow-left pl-[65px]"></i>
+                <i className="fa-solid fa-arrow-left pl-[65px]"></i>
                 <div className="text-2xl font-bold text-base-300">
                   Forum Global
                 </div>
-                <i class="fa-solid fa-magnifying-glass pr-[65px]"></i>
+                <i className="fa-solid fa-magnifying-glass pr-[65px]"></i>
               </div>
               <div className="absolute bottom-32 w-full px-4">
                 {data.map((index) => (
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-4" key={index}>
                     <img
-                      src={`${index.avatar}`}
+                      src={index.avatar ?  `http://localhost:4000/${index.avatar}` : `http://localhost:4000/uploads/default.png`}
                       alt="profile"
                       className="h-[40px] w-[40px] rounded-full"
                     />
@@ -118,10 +119,10 @@ const Dashboard = () => {
                   placeholder="Kirim sebuah pesan"
                 />
                 <div
-                  className="absolute bottom-[-93px] flex h-[50px] w-[50px] items-center justify-center rounded-full bg-base-500 text-slate-800 right-[30px]
+                  className="absolute bottom-[-93px] right-[30px] flex h-[50px] w-[50px] items-center justify-center rounded-full bg-base-500 text-slate-800
                 "
                 >
-                  <i class="fa-solid fa-paper-plane text-2xl"></i>
+                  <i className="fa-solid fa-paper-plane text-2xl"></i>
                 </div>
               </div>
             </div>

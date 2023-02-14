@@ -4,6 +4,7 @@ const createTokenUser = (user) => {
     id: user._id,
     role: user.role,
     email: user.email,
+    avatar: user.avatar,
   };
 };
 

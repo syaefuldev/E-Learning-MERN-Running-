@@ -10,7 +10,7 @@ const createUser = async (req) => {
     password,
     role,
     username,
-    avatar: req.file ? `uploads/${req.file.filename}` : `uploads/avatar/default.jpeg`,
+    avatar: req.file ? `uploads/${req.file.filename}` : `uploads/default.png`,
   });
 
   delete users._doc.password;
