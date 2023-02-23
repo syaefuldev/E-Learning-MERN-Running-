@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import axios from "axios";
-import FormProfile from "../components/FormProfile";
+import FormProfile from "../components/section/FormProfile";
 
 const Profile = () => {
   const token = localStorage.getItem("token");
   const statics = [jwtDecode(token)];
   useEffect(() => {
-    document.title = "Setting Profile"
-  },[])
-  if (!token) {
-    return <Navigate to={"/"} replace={true} />;
-  }
+    document.title = "Setting Profile";
+  }, []);
 
   return (
     <section>

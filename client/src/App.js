@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { IsLogin } from "./auth/IsLogin";
 import Navbar from "./components/section/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
@@ -15,9 +16,30 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/profile/:id" element={<Profile />} />
+        <Route
+          path="/dashboard"
+          element={
+            <IsLogin>
+              <Dashboard />
+            </IsLogin>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <IsLogin>
+              <Settings />
+            </IsLogin>
+          }
+        />
+        <Route
+          path="/profile/:id"
+          element={
+            <IsLogin>
+              <Profile />
+            </IsLogin>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

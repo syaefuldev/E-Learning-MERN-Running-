@@ -42,6 +42,7 @@ const FormProfile = () => {
       );
 
       const result = res.data.data.token;
+      console.log(res.data.data.token);
       localStorage.setItem("token", result);
     } catch (error) {
       console.log(error.response.data.msg);
@@ -130,7 +131,7 @@ const FormProfile = () => {
             value={editData.bio ? editData.bio : ""}
             onChange={handleChange}
           />
-          <button>Ubah Profile</button>
+          <button type="submit">Ubah Profile</button>
         </div>
       </form>
     </>
