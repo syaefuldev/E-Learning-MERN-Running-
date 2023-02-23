@@ -5,16 +5,28 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  window.onscroll = function () {
+    const header = document.querySelector("#navbar");
+    const fixedNav = header.offsetTop;
+    if (window.pageYOffset > fixedNav) {
+      header.classList.add("navbar-fixed");
+    } else {
+      header.classList.remove("navbar-fixed");
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
   return (
     <>
-      <section id="navbar">
+      <section>
         <div
           className="fixed z-[999999] w-full px-4 py-4 lg:flex lg:items-center lg:justify-between lg:py-2 
         lg:px-[65px] "
+          id="navbar"
         >
           <div className="flex justify-between lg:w-2/4">
             <img src="logo.png" alt="logo" className="w-[45%] lg:w-1/4" />
