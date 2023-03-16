@@ -10,53 +10,52 @@ const Settings = () => {
   const getUsers = async () => {
     const decode = jwtDecode(token);
 
-    setData([decode]);
+    const newData = [...data, decode];
+
+    setData(newData);
   };
-  console.log(data);
 
   useEffect(() => {
     getUsers();
     document.title = "Settings";
-  }, []);
+  },[]);
 
   return (
     <section>
       <div className="bg-base-800">
-        <div className="lg:flex lg:h-screen lg:items-center  lg:justify-between pt-20 lg:px-[65px] lg:pt-[150px] px-4">
+        <div className="px-4 pt-20 lg:flex  lg:h-screen lg:items-center lg:justify-between lg:px-[65px] lg:pt-[150px]">
           <Sidebar />
-          <div className="lg:w-[75%] w-full">
+          <div className="w-full lg:w-[75%]">
             <div>
               <p className="text-3xl font-bold text-slate-800">Settings</p>
               <p className="text-md text-slate-700">
                 Silahkan ubah pengaturan sesuai yang diinginkan
               </p>
             </div>
-            <div className="flex w-full lg:justify-between pt-6 lg:pt-[100px] flex-wrap justify-center space-y-4 lg:space-y-0 px-2">
-              <div className="lg:w-[30%] rounded-xl bg-white px-6 py-6 shadow-sm w-full">
+            <div className="flex w-full flex-wrap justify-center space-y-4 px-2 pt-6 lg:justify-between lg:space-y-0 lg:pt-[100px]">
+              <div className="w-full rounded-xl bg-white px-6 py-6 shadow-sm lg:w-[30%]">
                 <img
                   src="images/settings/course.svg"
                   alt="profile"
                   className="h-[100px] w-[100px] rounded-full border"
                 />
-                <p className="py-4 lg:text-xl text-2xl font-semibold text-slate-800">
+                <p className="py-4 text-2xl font-semibold text-slate-800 lg:text-xl">
                   Course Settings
                 </p>
-                <p className="text-sm text-slate-700">
-                  Ubah Pembelajaran
-                </p>
+                <p className="text-sm text-slate-700">Ubah Pembelajaran</p>
                 <Link to={"/setting_course"}>
                   <button className="my-4 w-full rounded-full bg-button-100 py-4 px-4 text-slate-600">
                     Update Course
                   </button>
                 </Link>
               </div>
-              <div className="lg:w-[30%] rounded-xl bg-white px-6 py-6 shadow-sm w-full">
+              <div className="w-full rounded-xl bg-white px-6 py-6 shadow-sm lg:w-[30%]">
                 <img
                   src="images/profile.svg"
                   alt="profile"
                   className="h-[100px] w-[100px] rounded-full border"
                 />
-                <p className="py-4 lg:text-xl text-2xl font-semibold text-slate-800">
+                <p className="py-4 text-2xl font-semibold text-slate-800 lg:text-xl">
                   My Profile
                 </p>
                 <p className="text-sm text-slate-700">Ubah data diri kamu</p>
@@ -70,13 +69,13 @@ const Settings = () => {
                   </div>
                 ))}
               </div>
-              <div className="lg:w-[30%] rounded-xl bg-white px-6 py-6 shadow-sm w-full">
+              <div className="w-full rounded-xl bg-white px-6 py-6 shadow-sm lg:w-[30%]">
                 <img
                   src="images/settings/password.svg"
                   alt="profile"
                   className="h-[100px] w-[100px] rounded-full border"
                 />
-                <p className="py-4 lg:text-xl text-2xl font-semibold text-slate-800">
+                <p className="py-4 text-2xl font-semibold text-slate-800 lg:text-xl">
                   Change Password
                 </p>
                 <p className="text-sm text-slate-700">Ubah kata sandi kamu</p>

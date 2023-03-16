@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate, Navigate } from "react-router-dom";
+import SButton from "../components/Button";
 
 const Login = () => {
   const token = localStorage.getItem("token");
@@ -85,6 +86,7 @@ const Login = () => {
             <img src="images/login/login.svg" alt="login" />
           </div>
         </div>
+        <SButton>s</SButton>
       </section>
     </>
   );

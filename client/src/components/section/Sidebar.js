@@ -10,12 +10,14 @@ const Sidebar = () => {
   const getUsers = async () => {
     const decode = jwtDecode(token);
 
-    setData([decode]);
-  };
+    const newData = [...data, decode];
 
+    setData(newData);
+  };
+  console.log(data)
   useEffect(() => {
     getUsers();
-  }, []);
+  },[]);
   return (
     <div
       id="sidebar"
